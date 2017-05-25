@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import {StyleSheet,Text,View} from 'react-native';
-
 import { Provider, connect } from 'react-redux';
 import { createStore } from 'redux';
 import { Actions, ActionConst, Router, Scene } from 'react-native-router-flux';
-
 import { appReducer } from '../reducers';
-import CounterApp from './counterApp';
-
 import Lists from '../components/lists';
 import TodoList from '../components/todoList';
 
@@ -22,7 +18,6 @@ class TabIcon extends Component {
 const Scenes = Actions.create(
   <Scene key='root'>
     <Scene key='lists' tabs={true} hideNavBar type={ActionConst.REPLACE}>
-      <Scene key='tab1' title='Counter' component={CounterApp} icon={TabIcon}></Scene>
       <Scene key='tab2' title='Add Todo' component={Lists} icon={TabIcon}></Scene>
       <Scene key='tab3' title='To Do List' component={TodoList} icon={TabIcon}></Scene>
     </Scene>

@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
 import { ActionConst } from 'react-native-router-flux';
 import { todoReducer } from './todoReducer';
-import { counterReducer } from './counterReducer';
-
 
 const sceneReducer = (state = {}, {type, scene}) => {
 	switch(type){
@@ -15,5 +13,5 @@ const sceneReducer = (state = {}, {type, scene}) => {
 
 export const appReducer = combineReducers({
 	sceneReducer,
-	counterReducer
+	todoReducer
 });
