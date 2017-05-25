@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet,Text,View} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Provider, connect } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import { Actions, Router, Scene } from 'react-native-router-flux';
