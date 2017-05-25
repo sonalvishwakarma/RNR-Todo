@@ -9,7 +9,7 @@ mapStateToProps = (state) => state;
 mapDispatchToProps = (dispatch) => ({
   addTodoItem: (todoItem) => {
     dispatch(addToTodoList(todoItem));
-    alert('added to todoList')
+    alert('added Todo')
   },
 });
 
@@ -25,6 +25,9 @@ class Lists extends Component {
         <TextInput style={styles.textInput} placeholder="Add todo item" onChangeText={(text) => this.setState({todoItem: text})} />                
         <TouchableHighlight style={styles.button} onPress={() => { addTodoItem(todoItem); }}>
           <Text style={styles.buttonText}>Add Todo</Text>
+        </TouchableHighlight>
+        <TouchableHighlight style={styles.button} onPress={() => { Actions.tab2(); }}>
+          <Text style={styles.buttonText}>View ToDoList</Text>
         </TouchableHighlight>
       </View>
     );

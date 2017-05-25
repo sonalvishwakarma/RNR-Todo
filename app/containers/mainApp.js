@@ -1,26 +1,20 @@
 import React, { Component } from 'react';
 import {StyleSheet,Text,View} from 'react-native';
 import { Provider, connect } from 'react-redux';
-import { createStore } from 'redux';
-import { Actions, ActionConst, Router, Scene } from 'react-native-router-flux';
-import { appReducer } from '../reducers';
+import { createStore, combineReducers } from 'redux';
+import { Actions, Router, Scene } from 'react-native-router-flux';
 import Lists from '../components/lists';
 import TodoList from '../components/todoList';
+import { todoReducer } from '../reducers/todoReducer';
 
-class TabIcon extends Component {
-  render(){
-    return (
-      <Text style={{color: this.props.selected ? 'red' :'black'}}>{this.props.title}</Text>
-    );
-  }
-}
+export const appReducer = combineReducers({
+  todoReducer
+});
 
 const Scenes = Actions.create(
-  <Scene key='root'>
-    <Scene key='lists' tabs={true} hideNavBar type={ActionConst.REPLACE}>
-      <Scene key='tab2' title='Add Todo' component={Lists} icon={TabIcon}></Scene>
-      <Scene key='tab3' title='To Do List' component={TodoList} icon={TabIcon}></Scene>
-    </Scene>
+  <Scene key="root">
+    <Scene key="tab1" component={Lists} title="Add todo" />
+    <Scene key="tab2" component={TodoList} title="Todo list"/>
   </Scene>
 );
 

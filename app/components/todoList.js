@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Text, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 import { removeFromTodoList } from '../actions';
 
 mapStateToProps = (state) => ({ todoList: state.todoReducer.todoList });
@@ -8,7 +9,7 @@ mapStateToProps = (state) => ({ todoList: state.todoReducer.todoList });
 mapDispatchToProps = (dispatch) => ({
   removeTodoItem: (todoItem) => {
     dispatch(removeFromTodoList(todoItem));
-    alert('Delete to todoList')
+    alert('Deleted the todo')
   },
 });
 
@@ -19,6 +20,9 @@ class TodoList extends Component {
     <ScrollView>
       <View style={styles.container}>
         <Text style={styles.heading}>To Do List</Text>
+         <TouchableHighlight style={styles.button} onPress={() => { Actions.tab1(); }}>
+          <Text style={styles.buttonText}>AddTodo</Text>
+        </TouchableHighlight>
         { 
           Object.keys(todoList).map((itemId) => {
             return (
@@ -53,6 +57,15 @@ const styles = {
   heading: {
     fontSize: 20,
     color : 'black'
+  },
+  button: {
+    padding: 5,
+    borderWidth: 1,
+    borderRadius: 5,
+    backgroundColor: 'green'
+  },
+  buttonText: {
+    color: 'white',
   },
   del : {
     color : 'red',
